@@ -1,2 +1,2 @@
-# SENAC_Programador_Java_Setembro_2026
+# SENAC Programador Java Setembro 2026
 Repositório do Curso de Programação Java (Setembro 2026)

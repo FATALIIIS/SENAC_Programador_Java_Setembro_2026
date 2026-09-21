@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head th:replace="~{cabecalho :: cabecalho}">
+	</head>
+	<body>
+		<form th:action="@{/calculadora}" method="get">
+			<h1>Calculadora</h1>
+			<label for="numero1">Digite um número:</label>
+			<input type="number" name="numero1" id="numero1" step="1" required>
+			<label for="numero2">Digite outro número:</label>
+			<input type="number" name="numero2" id="numero2" step="1" required>
+			<label for="operacao">Escolha a operação:</label>
+			<fieldset>
+			<input type="radio" name="operacao" value="+">+
+			<input type="radio" name="operacao" value="-">-
+			<input type="radio" name="operacao" value="×">×
+			<input type="radio" name="operacao" value="÷">÷<br>
+			</fieldset>
+			<button type="submit" id="calcular">Calcular</button>
+			<button><a th:href="@{/}" id="voltar">Voltar</a></button>
+		</form>
+		<section class="resposta" th:if="${resultado!=null}">
+			<p>
+			<span th:text="${numero1}">0</span>
+			<span th:text="${operacao}">+</span>
+			<span th:text="${numero2}">0</span>
+			=
+			<span th:text="${resultado}">0</span>
+			</p>
+		</section>	
+		</body>
+</html>

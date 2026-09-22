@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{cabecalho :: cabecalho}">
+	</head>
+	<body>
+		<form th:action="@{/posto}" method="get">
+		<h1>Cálculo do total de combústivel:</h1>
+		<label for="litros">Digite a quantidade em litros:</label>
+		<input type="number" name="litros" id="litros" step="1" min="1" max="50" required><br>
+		<label for="combustivel">Escolha o tipo de combústivel:</label>
+		<fieldset>
+		<input type="radio" name="combustivel" value="Gasolina">Gasolina
+		<input type="radio" name="combustivel" value="Álcool">Álcool<br>
+		</fieldset>
+		<button type="submit">Calcular</button>
+		<button><a th:href="@{/}">Voltar</a></button>
+		</form>
+		<section class="resposta" th:if="${total!=null}">
+			<p>Tipo do Combustível: <span th:text="${combustivel}">Combustível</span></p>
+			<p>Total R$: <span th:text="${total}">0</span></p>
+		</section>
+	</body>
+</html>

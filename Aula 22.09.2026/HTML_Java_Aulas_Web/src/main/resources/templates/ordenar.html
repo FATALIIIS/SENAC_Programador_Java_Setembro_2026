@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{cabecalho :: cabecalho}">
+	</head>
+	<body>
+		<form th:action="@{/ordenar}" method="get">
+		<h1>Ordenação de Números</h1>
+		<label for="numero1">Digite o 1&ordm; número:</label>
+		<input type="number" name="numero1" id="numero1" step="1" min="1" max="999" required><br>
+		<label for="numero2">Digite o 2&ordm; número:</label>
+		<input type="number" name="numero2" id="numero2" step="1" min="1" max="999" required><br>
+		<label for="numero3">Digite o 3&ordm; número:</label>
+		<input type="number" name="numero3" id="numero3" step="1" min="1" max="999" required><br>
+		<button type="submit">Ordenar</button>
+		<button><a th:href="@{/}">Voltar</a></button>
+		</form>
+		<section class="resposta" th:if="${ordem!=null}">
+			<p>Ordem Decrescente: <span th:text="${ordem}">0</span></p>
+		</section>
+		<section class="resposta" th:if="${resultado!=null}">
+			<p th:text="${resultado>">0</p>
+		</section>		
+		</body>
+</html>

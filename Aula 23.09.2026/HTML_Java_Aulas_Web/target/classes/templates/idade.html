@@ -1,0 +1,27 @@
+<!DOCTYPE html> 
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{cabecalho :: cabecalho}">
+	</head>
+	<body>
+		<form th:action="@{/idade}" method="get">
+			<h1>Comparação de Idades</h1>
+			<label for="idadeh1">Digite a idade do 1&ordm; homem:</label>
+			<input type="number" name="idadeh1" id="idadeh1" min="1" max="120" step="1" required><br>
+			<label for="idadeh2">Digite a idade do 2&ordm; homem:</label>
+			<input type="number" name="idadeh2" id="idadeh2" min="1" max="120" step="1" required><br>
+			<label for="idadem1">Digite a idade da 1&ordm; mulher:</label>
+			<input type="number" name="idadem1" id="idadem1" min="1" max="120" step="1" required><br>
+			<label for="idadem2">Digite a idade da 2&ordm; mulher:</label>
+			<input type="number" name="idadem2" id="idadem2" min="1" max="120" step="1" required><br>
+			<button type="submit">Comparar</button>
+			<button><a th:href="@{/}">Voltar</a></button>
+		</form>
+		<section class="resposta" th:if="${soma!=null}">
+			<p>A soma da idade do homem mais velho que é: <span th:text="${maisvelho}">0</span>, com a idade da mulher mais nova que é: <span th:text="${maisnova}">0</span>
+			,é igual a: <span th:text="${soma}">0</span></p>	
+		</section>
+		<section class="resposta" th:if="${resposta!=null}">
+			<p th:text="${resposta}">Resposta</p>
+		</section>
+	</body>
+</html>

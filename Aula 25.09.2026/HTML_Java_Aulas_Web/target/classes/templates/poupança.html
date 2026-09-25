@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{cabecalho :: cabecalho}">
+	</head>
+	<body>
+		<form th:action="@{/poupança}" th:object="${poupança}" method="post">
+		<h1>Cálculo de Rendimento</h1>
+		<label for="titular">Digite o nome do titular:</label>
+		<input type="text" name="titular" id="titular" th:field="*{titular}" size="40" maxlenght="40" pattern="[a-zA-ZçÇáÁéÉúÚãÃóÓ]{2,40}" required><br>
+		<label for="saldo">Digite o saldo:</label>
+		<input type="number" name="saldo" id="saldo" th:field="*{saldo}" step="0.01" min="0" required><br>
+		<label for="taxa">Digite a taxa de juros:</label>
+		<input type="number" name="taxa" id="taxa" th:field="*{taxa}" step="1" min="1" max="100" required><br>
+		<button type="submit">Calcular</button>
+		<button><a th:href="@{/}">Voltar</a></button>
+		</form>
+		<section class="resposta" th:if="${poupança.titular!=null and poupança.titular!=''}">
+			<p>Titular: <span th:text="${poupança.titular}">titular</span></p>
+			<p>Saldo Declarado: $<span th:text="${saldo}">saldo</span></p>
+			<p>Taxa Declarada: <span th:text="${poupança.taxa*100}">taxa</span>%</p>
+			<p>Rendimento: <span th:text="${rendimento}">0</span>
+		</section>
+	</body>
+</html>

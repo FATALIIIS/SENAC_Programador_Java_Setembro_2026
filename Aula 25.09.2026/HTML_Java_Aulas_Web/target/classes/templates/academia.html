@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{cabecalho :: cabecalho}">
+	</head>
+	<body>
+		<form th:action="@{/academia}" th:object="${aluno}" method="post">
+			<h1>Cadastro de Aluno</h1>
+			<label for="nome">Digite o nome:</label><br>
+			<input type="text" name="nome" id="nome" th:field="*{nome}" size="40" maxlenght="40" pattern="[a-zA-ZçÇáÁéÉúÚãÃóÓ]{2,40}" required><br>
+			<label for="peso">Digite o peso:</label><br>
+			<input type="text" name="peso" id="peso" th:field="*{peso}" min="0.0" max="250.0" step="0.1" required><br>
+			<label for="altura">Digite a altura:</label><br>
+			<input type="number" name="altura" id="altura" th:field="*{altura}" min="0.00" max="2.70" step="0.01" required><br>
+			<button type="submit">Cadastrar</button>
+			<button><a th:href="@{/}">Voltar</a></button>
+		</form>
+		<section class="resposta" th:if="${aluno.nome!=null and aluno.nome!=''}">
+			<p>Nome: <span th:text="${aluno.nome}">nome</span></p>
+			<p>Altura: <span th:text="${aluno.altura}">altura</span>m</p>
+			<p>Peso: <span th:text="${aluno.peso}">peso</span>KG</p>
+			<p>IMC: <span th:text="${imc}">imc</span>Kg/m&sup2;</p>
+			<p>Situação: <span th:text="${situacao}">Situação</span></p>
+	</body>
+</html>
